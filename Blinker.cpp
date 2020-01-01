@@ -1,22 +1,24 @@
 /* Blinker.cpp - Blink LEDs nicely
- * 
+ *
+ * Copyright 2019-2020 Marcio Pessoa
+ *
  */
 
 #include "Arduino.h"
 #include "Blinker.h"
 
 /* Blinker
- * 
+ *
  * Description
  *   Blink LED without delay function.
- * 
+ *
  *   RealTime (int pin, int millis_period, boolean state)
- * 
+ *
  * Parameters
  *   pin: Arduino LED pin
  *   millis_period: Time period to define blink delay (milliseconds)
  *   state: Initial LED state
- * 
+ *
  * Returns
  *   void
  */
@@ -32,15 +34,15 @@ Blinker::Blinker(byte pin, unsigned int millis_period, bool state) {
 }
 
 /* blink
- * 
+ *
  * Description
  *   Blink LED when time period expires.
- * 
+ *
  *   a_led.blink()
- * 
+ *
  * Parameters
  *   none
- * 
+ *
  * Returns
  *   false: if the last state was not modified
  *   true: if the last state was modified
@@ -60,15 +62,15 @@ bool Blinker::blink() {
 }
 
 /* fade
- * 
+ *
  * Description
  *   Fade LED nicely.
- * 
+ *
  *   a_led.fade()
- * 
+ *
  * Parameters
  *   void
- * 
+ *
  * Returns
  *   false: if the last state was not modified
  *   true: if the last state was modified
@@ -83,7 +85,7 @@ bool Blinker::fade() {
   // Build a linear x variable (0 ~ 1)
   x = (float)(millis_current - _millis_elapsed) / _millis_period;
   x *= PI;
-  // Apply cos function to brightness 
+  // Apply cos function to brightness
   brightness = (((-cos(x * 2)) + 1) / 2 * (_max - _min)) + _min;
   analogWrite(_pin, brightness);
   // Reset timer
@@ -96,16 +98,16 @@ bool Blinker::fade() {
 }
 
 /* fadeLimits
- * 
+ *
  * Description
  *   Define fade limits.
- * 
+ *
  *   a_led.fadeLimits()
- * 
+ *
  * Parameters
  *   int min
  *   int max
- * 
+ *
  * Returns
  *   false: if no error
  *   true: if error found
@@ -120,15 +122,15 @@ bool Blinker::fadeLimits(int min, int max) {
 }
 
 /* periodWrite
- * 
+ *
  * Description
  *   Change period used to blink LED.
- * 
+ *
  *   a_led.periodWrite(int millis_period)
- * 
+ *
  * Parameters
  *   millis_period: Time period to define blink delay (milliseconds)
- * 
+ *
  * Returns
  *   void
  */
@@ -137,15 +139,15 @@ void Blinker::periodWrite(unsigned int millis_period) {
 }
 
 /* disable
- * 
+ *
  * Description
  *   Disable LED to blink.
- * 
+ *
  *   a_led.stop()
- * 
+ *
  * Parameters
  *   none
- * 
+ *
  * Returns
  *   void
  */
@@ -155,15 +157,15 @@ void Blinker::disable() {
 }
 
 /* enable
- * 
+ *
  * Description
  *   Enable LED to blink.
- * 
+ *
  *   a_led.start()
- * 
+ *
  * Parameters
  *   none
- * 
+ *
  * Returns
  *   void
  */
@@ -172,15 +174,15 @@ void Blinker::enable() {
 }
 
 /* status
- * 
+ *
  * Description
  *   Return LED status.
- * 
+ *
  *   a_led.status(int millis_period)
- * 
+ *
  * Parameters
  *   none
- * 
+ *
  * Returns
  *   bool: false if LED is not blinking, true if LED is blinking
  */
