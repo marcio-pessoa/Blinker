@@ -4,8 +4,8 @@
  *
  */
 
-#include "Arduino.h"
 #include "Blinker.h"
+#include "Arduino.h"
 
 /* Blinker
  *
@@ -138,6 +138,8 @@ void Blinker::periodWrite(unsigned int millis_period) {
   _millis_period = millis_period;
 }
 
+void Blinker::off() { digitalWrite(_pin, LOW); }
+
 /* disable
  *
  * Description
@@ -169,9 +171,7 @@ void Blinker::disable() {
  * Returns
  *   void
  */
-void Blinker::enable() {
-  _enable = true;
-}
+void Blinker::enable() { _enable = true; }
 
 /* status
  *
@@ -186,6 +186,4 @@ void Blinker::enable() {
  * Returns
  *   bool: false if LED is not blinking, true if LED is blinking
  */
-bool Blinker::status() {
-  return _enable;
-}
+bool Blinker::status() { return _enable; }
