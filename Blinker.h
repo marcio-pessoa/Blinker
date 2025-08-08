@@ -2,28 +2,6 @@
  *
  * Author: Márcio Pessoa <marcio.pessoa@gmail.com>
  * Contributors: none
- *
- * Change log
- * 2015-01-10
- *         * Blinker
- *         added default value to millis_period variable (1 second).
- *
- * 2014-11-17
- *         *
- *         Variable optimization: int _pin to byte _pin.
- *
- * 2014-10-28
- *         * blink
- *         code optimization.
- *
- * 2014-09-12
- *         * fade
- *         added fade method.
- *         * fadeLimits
- *         added fadeLimits method.
- *
- * 2014-08-04
- *         Experimental version.
  */
 
 #ifndef Blinker_h
