@@ -1,21 +1,20 @@
 /* Blinker.h - Blink LEDs nicely
  *
- * Author: Márcio Pessoa <marcio.pessoa@gmail.com>
- * Contributors: none
+ * Copyright (c) 2024 Márcio Pessoa
+ *
+ * Notice: This library is licensed under the MIT License.
  */
 
 #ifndef Blinker_h
 #define Blinker_h
 
 #include "Arduino.h"
-
-// If PI constant is not defined, plese uncoment the follow line:
-// const float PI
-// = 3.1415926535897932384626433832795028841971693993751058209749445923078164062;
+#include <math.h>
 
 class Blinker {
  public:
   Blinker(byte pin, unsigned int millis_period = 1000, bool state = false);
+  void begin();
   bool blink();
   bool fade();
   bool fadeLimits(int min, int max);
@@ -23,6 +22,7 @@ class Blinker {
   void enable();
   bool status();
   void periodWrite(unsigned int millis_period);
+  unsigned int periodRead();
   void off();
 
  private:
